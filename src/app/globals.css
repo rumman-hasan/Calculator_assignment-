@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-brand-ink text-brand-mist antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid #10a9d1;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  select.input option {
+    background-color: #0a1a33;
+    color: #f3f8fc;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-page px-5 sm:px-8;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-brand-cyan text-brand-ink hover:bg-brand-cyanSoft;
+  }
+  .btn-royal {
+    @apply btn bg-brand-royal text-white hover:bg-brand-royalBright;
+  }
+  .btn-outline {
+    @apply btn border border-white/20 text-white hover:border-brand-cyan hover:text-brand-cyan;
+  }
+  .btn-sm {
+    @apply !px-3 !py-1.5 !text-xs;
+  }
+  .btn-danger {
+    @apply btn border border-red-400/40 text-red-300 hover:bg-red-500/10;
+  }
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.2em] text-brand-cyan;
+  }
+  .card {
+    @apply rounded-xl border border-white/10 bg-brand-surface;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wider text-brand-muted;
+  }
+  .input {
+    @apply w-full rounded-md border border-white/15 bg-brand-ink/60 px-3.5 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-brand-cyan focus:outline-none focus:ring-2 focus:ring-brand-cyan/30;
+  }
+  .data {
+    @apply w-full text-left text-sm;
+  }
+  .data th {
+    @apply border-b border-white/10 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-brand-muted;
+  }
+  .data td {
+    @apply border-b border-white/5 px-3 py-3 align-top text-white/90;
+  }
+  .bg-grid {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: radial-gradient(ellipse at 30% 20%, black 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse at 30% 20%, black 30%, transparent 75%);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Light theme for the admin dashboard and client portal.
+   Everything inside <div class="app-light"> is drawn on a light background.
+   The public website stays dark and cinematic.
+   --------------------------------------------------------------------------- */
+.app-light {
+  color-scheme: light;
+  color: #1e293b;
+}
+.app-light .text-white { color: #0f172a; }
+.app-light .text-white\/50 { color: #64748b; }
+.app-light .text-white\/70,
+.app-light .text-white\/80,
+.app-light .text-white\/85,
+.app-light .text-white\/90 { color: #334155; }
+.app-light .text-brand-muted { color: #64748b; }
+.app-light .text-brand-cyan,
+.app-light .text-brand-cyanSoft { color: #0b6fa8; }
+.app-light .text-emerald-300 { color: #047857; }
+.app-light .text-red-300,
+.app-light .text-red-200 { color: #b91c1c; }
+.app-light .border-white\/5,
+.app-light .border-white\/10,
+.app-light .border-white\/15,
+.app-light .border-white\/20 { border-color: #e2e8f0; }
+.app-light .bg-white\/10,
+.app-light .bg-white\/5 { background-color: #f1f5f9; }
+.app-light .card {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+.app-light .label { color: #64748b; }
+.app-light .input {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+.app-light .input::placeholder { color: #94a3b8; }
+.app-light .input:focus { border-color: #2862bf; --tw-ring-color: rgba(40, 98, 191, 0.25); }
+.app-light select.input option { background-color: #ffffff; color: #0f172a; }
+.app-light .btn-primary { background-color: #2862bf; color: #ffffff; }
+.app-light .btn-primary:hover { background-color: #1f4f9c; }
+.app-light .btn-royal { background-color: #2862bf; color: #ffffff; }
+.app-light .btn-outline { border-color: #cbd5e1; color: #1e293b; background-color: #ffffff; }
+.app-light .btn-outline:hover { border-color: #2862bf; color: #2862bf; }
+.app-light .btn-danger { border-color: #fca5a5; color: #b91c1c; background-color: #ffffff; }
+.app-light .btn-danger:hover { background-color: #fef2f2; }
+.app-light .eyebrow { color: #0b6fa8; }
+.app-light .data th { border-color: #e2e8f0; color: #64748b; }
+.app-light .data td { border-color: #f1f5f9; color: #1e293b; }
+.app-light a.text-brand-cyan:hover { text-decoration: underline; }
+
+/* Print-friendly invoices: only the invoice itself is printed. */
+@media print {
+  body { background: #ffffff !important; }
+  .print\:hidden { display: none !important; }
+  .app-light { background: #ffffff !important; }
+  .app-light .card { box-shadow: none; border-color: #cbd5e1; }
+}
